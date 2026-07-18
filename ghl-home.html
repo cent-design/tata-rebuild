@@ -1,0 +1,807 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Slurp | Ramen in Copenhagen</title>
+<style>
+:root {
+  --cream: #fff6ea;
+  --red: #bd2025;
+  --red-25: rgba(189, 32, 37, .25);
+  --cream-25: rgba(255, 246, 234, .25);
+  --gap: 1.5rem;
+  --maxw: 1200px;
+}
+
+* { box-sizing: border-box; }
+
+@font-face {
+  font-family: "Altpicaro Official";
+  src: url("https://cdn.prod.website-files.com/68baa907f46485600e606eb9/68f84fae25a305cd0c5d3222_ALTPicaro-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background-color: var(--cream);
+  color: var(--red);
+  font-family: "Altpicaro Official", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+img { max-width: 100%; display: block; }
+
+a { color: inherit; text-decoration: none; }
+
+h1, h2, h3, h4 { margin: 0; font-weight: 400; }
+
+p { margin: 0 0 .75em; }
+
+.slurp-container {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.slurp-visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ---------- Header / Nav ---------- */
+.slurp-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--cream);
+  border-bottom: 1px solid var(--red-25);
+}
+
+.slurp-header-inner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.slurp-logo {
+  font-size: 1.4rem;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  flex: none;
+}
+
+.slurp-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  flex-wrap: wrap;
+}
+
+.slurp-nav a {
+  font-size: .95rem;
+  letter-spacing: .02em;
+  white-space: nowrap;
+  border-bottom: 1px solid transparent;
+  transition: border-color .2s ease;
+}
+
+.slurp-nav a:hover { border-color: var(--red); }
+
+.slurp-nav-toggle {
+  display: none;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  color: var(--red);
+  font-family: inherit;
+  font-size: .95rem;
+  padding: .4em .2em;
+}
+
+.slurp-nav-close {
+  display: none;
+}
+
+@media (max-width: 860px) {
+  .slurp-nav {
+    display: none;
+    position: fixed;
+    inset: 0;
+    top: 0;
+    background-color: var(--cream);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    z-index: 99;
+  }
+  .slurp-nav.is-open { display: flex; }
+  .slurp-nav a { font-size: 1.4rem; }
+  .slurp-nav-toggle { display: block; }
+  .slurp-nav-close {
+    display: none;
+    position: fixed;
+    top: 1.1rem;
+    right: 1.5rem;
+    z-index: 101;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    color: var(--red);
+    font-family: inherit;
+    font-size: .95rem;
+  }
+  .slurp-nav.is-open ~ .slurp-nav-close,
+  .slurp-nav-close.is-open { display: block; }
+}
+
+/* ---------- Hero ---------- */
+.slurp-hero {
+  position: relative;
+  min-height: 88vh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  color: var(--cream);
+}
+
+.slurp-hero video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.slurp-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,.05) 0%, rgba(0,0,0,.35) 100%);
+  z-index: 1;
+}
+
+.slurp-hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 2rem 1.5rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  max-width: var(--maxw);
+  margin: 0 auto;
+}
+
+.slurp-hero-title {
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  line-height: .95;
+  text-transform: uppercase;
+}
+
+.slurp-hero-sub {
+  text-align: right;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* ---------- Sections ---------- */
+.slurp-section {
+  padding: 5rem 0;
+}
+
+.slurp-section-title {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  margin-bottom: 2rem;
+}
+
+/* About */
+.slurp-about {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: var(--gap);
+}
+
+.slurp-about-copy { font-size: 1.4rem; line-height: 1.3; }
+
+.slurp-quotes {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 2rem;
+  border-top: 1px solid var(--red-25);
+  padding-top: 2rem;
+}
+
+.slurp-quotes-text { max-width: 32rem; font-size: .95rem; }
+
+.slurp-quotes-author {
+  display: flex;
+  align-items: flex-end;
+  gap: 1rem;
+  text-align: right;
+  font-size: .95rem;
+}
+
+.slurp-quotes-author img {
+  width: 5.5rem;
+  border-radius: .35em;
+}
+
+@media (max-width: 760px) {
+  .slurp-about { grid-template-columns: 1fr; }
+  .slurp-quotes { flex-direction: column; align-items: flex-start; }
+  .slurp-quotes-author { text-align: left; }
+}
+
+/* Restaurants */
+.slurp-locales {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gap);
+}
+
+@media (max-width: 760px) {
+  .slurp-locales { grid-template-columns: 1fr; }
+}
+
+.slurp-local video {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: .35em;
+  display: block;
+}
+
+.slurp-local-texto { margin-top: 1rem; }
+
+.slurp-local-desc { margin-top: .75rem; font-size: .95rem; }
+
+.slurp-local-tags {
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+  margin-top: .75rem;
+}
+
+.slurp-tag {
+  border: 1px solid var(--red-25);
+  border-radius: .35em;
+  padding: .3em .7em;
+  font-size: .8rem;
+}
+
+/* Behind the Bowl */
+.slurp-behind-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: start;
+  padding: 2.5rem 0;
+  border-top: 1px solid var(--red-25);
+}
+
+.slurp-behind-item:first-of-type { border-top: none; }
+
+.slurp-behind-item h3 {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+.slurp-behind-item p { font-size: .95rem; }
+
+.slurp-behind-item img { border-radius: .35em; }
+
+@media (max-width: 760px) {
+  .slurp-behind-item { grid-template-columns: 1fr; }
+  .slurp-behind-item img { order: -1; }
+}
+
+/* ---------- Footer / Contact ---------- */
+.slurp-footer {
+  padding: 4rem 0 2rem;
+  border-top: 1px solid var(--red-25);
+}
+
+.slurp-footer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--gap);
+}
+
+@media (max-width: 900px) {
+  .slurp-footer-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 560px) {
+  .slurp-footer-grid { grid-template-columns: 1fr; }
+}
+
+.slurp-footer-col h4 {
+  font-size: .95rem;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  margin-bottom: 1rem;
+}
+
+.slurp-footer-item {
+  font-size: .9rem;
+  margin-bottom: .6rem;
+}
+
+.slurp-footer-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: .9rem;
+  margin-bottom: .6rem;
+  cursor: pointer;
+  border-bottom: 1px solid transparent;
+}
+
+.slurp-footer-link:hover { border-color: var(--red); }
+
+.slurp-dot {
+  width: .4rem;
+  height: .4rem;
+  border-radius: 50%;
+  background: var(--red);
+  opacity: .5;
+  flex: none;
+}
+
+/* FAQ accordion */
+.slurp-faq-item { margin-bottom: .3rem; }
+
+.slurp-faq-q {
+  cursor: pointer;
+  font-size: .9rem;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .3rem 0;
+}
+
+.slurp-faq-a {
+  max-height: 0;
+  overflow: hidden;
+  font-size: .85rem;
+  opacity: .85;
+  transition: max-height .3s ease, padding .3s ease;
+}
+
+.slurp-faq-item.is-open .slurp-faq-a {
+  max-height: 20em;
+  padding: .3rem 0 1rem;
+}
+
+/* Newsletter */
+.slurp-newsletter-form {
+  display: none;
+  margin-top: .75rem;
+  gap: .5rem;
+}
+
+.slurp-newsletter-form.is-open { display: flex; }
+
+.slurp-newsletter-form input[type="email"] {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--red);
+  color: var(--red);
+  font-family: inherit;
+  font-size: .9rem;
+  padding: .3em 0;
+}
+
+.slurp-newsletter-form input[type="email"]::placeholder { color: var(--red-25); }
+
+.slurp-newsletter-form button {
+  background: none;
+  border: 1px solid var(--red);
+  border-radius: .35em;
+  color: var(--red);
+  font-family: inherit;
+  font-size: .85rem;
+  padding: .3em .8em;
+  cursor: pointer;
+}
+
+.slurp-newsletter-msg {
+  font-size: .8rem;
+  margin-top: .5rem;
+  display: none;
+}
+
+.slurp-newsletter-msg.is-visible { display: block; }
+
+.slurp-footer-logos {
+  display: flex;
+  justify-content: center;
+  margin: 3rem 0 2rem;
+}
+
+.slurp-footer-logos img { max-width: 14rem; }
+
+.slurp-creditos {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: .8rem;
+  border-top: 1px solid var(--red-25);
+  padding-top: 1.5rem;
+}
+
+.slurp-creditos-der {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+}
+
+.slurp-creditos-der img { width: 1rem; }
+
+/* ---------- Menu page ---------- */
+.slurp-menu-hero {
+  padding: 7rem 0 2rem;
+  text-align: center;
+}
+
+.slurp-menu-hero h1 {
+  font-size: clamp(2rem, 6vw, 3.2rem);
+  text-transform: uppercase;
+}
+
+.slurp-menu-group { margin-bottom: 3.5rem; }
+
+.slurp-menu-group-title {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  border-bottom: 1px solid var(--red-25);
+  padding-bottom: .75rem;
+  margin-bottom: 1.25rem;
+}
+
+.slurp-menu-group-title img { width: 1.4rem; height: 1.4rem; }
+
+.slurp-menu-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px dotted var(--red-25);
+}
+
+.slurp-menu-item:last-child { border-bottom: none; }
+
+.slurp-menu-item-name {
+  display: flex;
+  align-items: baseline;
+  gap: .6rem;
+  flex-wrap: wrap;
+  font-size: 1.05rem;
+}
+
+.slurp-menu-item-badge {
+  font-size: .7rem;
+  text-transform: uppercase;
+  letter-spacing: .03em;
+  border: 1px solid var(--red-25);
+  border-radius: .3em;
+  padding: .1em .5em;
+  opacity: .8;
+}
+
+.slurp-menu-item-desc {
+  font-size: .85rem;
+  opacity: .85;
+  margin-top: .3rem;
+}
+
+.slurp-menu-item-desc p { margin: 0 0 .2em; }
+
+.slurp-menu-item-price {
+  font-size: 1rem;
+  white-space: nowrap;
+  align-self: start;
+}
+</style>
+</head>
+<body>
+
+
+<header class="slurp-header">
+  <div class="slurp-header-inner">
+    <a href="/" class="slurp-logo">Slurp</a>
+    <button class="slurp-nav-toggle" type="button" aria-label="Open menu">Menu</button>
+    <nav class="slurp-nav" aria-label="Primary">
+      <a href="/">Home</a>
+      <a href="#restaurant">Restaurants</a>
+      <a href="#behind">Behind the Bowl</a>
+      <a href="/menu">Menu</a>
+      <a href="#contact">Contact &amp; Info</a>
+      <a href="/store">Store</a>
+      <a href="/order">Online Ordering</a>
+    </nav>
+    <button class="slurp-nav-close" type="button" aria-label="Close menu">Close</button>
+  </div>
+</header>
+
+<main>
+
+<section class="slurp-hero">
+  <video autoplay muted loop playsinline poster="https://cdn.prod.website-files.com/68baa907f46485600e606eb9%2F68fa2d91c4924ecebaf7d525_Top%20Down%20graded%20221025-poster-00001.jpg">
+    <source src="https://cdn.prod.website-files.com/68baa907f46485600e606eb9%2F68fa2d91c4924ecebaf7d525_Top%20Down%20graded%20221025-transcode.mp4" type="video/mp4">
+    <source src="https://cdn.prod.website-files.com/68baa907f46485600e606eb9%2F68fa2d91c4924ecebaf7d525_Top%20Down%20graded%20221025-transcode.webm" type="video/webm">
+  </video>
+  <div class="slurp-hero-content">
+    <h1 class="slurp-hero-title">Slurp</h1>
+    <div class="slurp-hero-sub">Ramen<br>Copenhagen</div>
+  </div>
+</section>
+
+
+<section class="slurp-section">
+  <div class="slurp-container">
+    <div class="slurp-about">
+      <h2 class="slurp-section-title">About</h2>
+      <div class="slurp-about-copy">
+        <p>Founded in 2017 by Austrian chef Philipp Inreiter &mdash; formerly of Noma and Tokyo&rsquo;s RyuGin &mdash; Slurp is a ramen shop grounded in Japanese tradition, but shaped by local ingredients, culture, and creativity.</p>
+        <p>Our broths are slow-cooked and umami-rich, our noodles are handmade with locally milled Bornholm flour, and our toppings shift with the seasons. This isn&rsquo;t about authenticity &mdash; it&rsquo;s about integrity, imagination, and soul.</p>
+        <p>We&rsquo;re a small but growing team serving bowls with heart in Copenhagen, starting with our original 22-seat shop and now also in our second location in the city center, opened in January 2025.</p>
+      </div>
+    </div>
+    <div class="slurp-quotes">
+      <div class="slurp-quotes-text">
+        <p>&ldquo;My family&rsquo;s favorite ramen shop - and mine too.&rdquo;<br>Ren&eacute; Redzepi, Noma</p>
+        <p>&ldquo;The best ramen I&rsquo;ve had outside of Japan.&rdquo;<br>David Chang, Momofuku</p>
+      </div>
+      <div class="slurp-quotes-author">
+        <div>Philipp Inreiter<br>Founder</div>
+        <img src="https://cdn.prod.website-files.com/68baa907f46485600e606eb9/68c1f28e6881aa826039c283_autor.jpg" alt="Philipp Inreiter, founder of Slurp" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="restaurant" class="slurp-section">
+  <div class="slurp-container">
+    <h2 class="slurp-section-title">Restaurants</h2>
+    <div class="slurp-locales">
+
+      <div class="slurp-local">
+        <video autoplay muted loop playsinline poster="https://cdn.prod.website-files.com/68baa907f46485600e606eb9%2F691b455a84fdfb987df4aaba_Nansensgade_1_poster.0000000.jpg" aria-hidden="true">
+          <source src="https://cdn.prod.website-files.com/68baa907f46485600e606eb9%2F691b455a84fdfb987df4aaba_Nansensgade_1_mp4.mp4" type="video/mp4">
+          <source src="https://cdn.prod.website-files.com/68baa907f46485600e606eb9%2F691b455a84fdfb987df4aaba_Nansensgade_1_webm.webm" type="video/webm">
+        </video>
+        <div class="slurp-local-texto">
+          <h3>Nansensgade &mdash; 22 Seats</h3>
+          <p>Nansensgade 90<br>1366 Copenhagen</p>
+          <p>Monday to Sunday<br>11:30&ndash;15 &amp; 16&ndash;21</p>
+        </div>
+        <p class="slurp-local-desc">Our OG spot. Tiny, loud, and full of energy&mdash;with just 22 seats and no reservations, it&rsquo;s best for solos or small groups. Come for the rich broth, stay for the buzz.</p>
+        <div class="slurp-local-tags"><span class="slurp-tag">No toilets</span>
+<span class="slurp-tag">No reservations</span>
+<span class="slurp-tag">Dogs welcome</span></div>
+      </div>
+
+
+      <div class="slurp-local">
+        <video autoplay muted loop playsinline poster="https://cdn.prod.website-files.com/68baa907f46485600e606eb9%2F6909cf4660278565ac97e8c4_Borgergade_3-poster-00001.jpg" aria-hidden="true">
+          <source src="https://cdn.prod.website-files.com/68baa907f46485600e606eb9%2F6909cf4660278565ac97e8c4_Borgergade_3-transcode.mp4" type="video/mp4">
+          <source src="https://cdn.prod.website-files.com/68baa907f46485600e606eb9%2F6909cf4660278565ac97e8c4_Borgergade_3-transcode.webm" type="video/webm">
+        </video>
+        <div class="slurp-local-texto">
+          <h3>Borgergade &mdash; 36 Seats</h3>
+          <p>Borgergade 16<br>1300 Copenhagen</p>
+          <p>Monday to Sunday<br>11:30&ndash;15 &amp; 17&ndash;22</p>
+        </div>
+        <p class="slurp-local-desc">Same ramen, more room. With 36 seats, this one&rsquo;s better for small groups and a little more breathing space&mdash;but still fast, fun, and full of flavor.</p>
+        <div class="slurp-local-tags"><span class="slurp-tag">No reservations</span>
+<span class="slurp-tag">Dogs welcome</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<section id="behind" class="slurp-section">
+  <div class="slurp-container">
+    <h2 class="slurp-section-title">Behind the Bowl</h2>
+
+    <div class="slurp-behind-item">
+      <div>
+        <h3>Ethos</h3>
+        <p>We believe great ramen isn&rsquo;t just cooked, it&rsquo;s crafted.<br><br>At Slurp, we do things our way. Rooted in Japanese technique but shaped by the people, places, and ingredients around us. It&rsquo;s about honouring the process, not copying tradition.<br><br>Everything we serve is made from scratch with care and intention. Slow-simmered broths. House-made noodles cut daily by our custom-built machine, Suzy. Toppings that shift with the seasons and the city.<br><br>This isn&rsquo;t about being the most &ldquo;authentic&rdquo; ramen shop outside Japan. It&rsquo;s about doing things with integrity. Staying curious. Keeping it real. Because if it doesn&rsquo;t taste like us, it&rsquo;s not worth serving.<br><br>Small team. Tight menu. Big flavour.<br>No shortcuts, no compromises.</p>
+      </div>
+      <img src="https://cdn.prod.website-files.com/68baa907f46485600e606eb9/68f852405d417dc7bc4e4275_im1.jpg"
+           srcset="https://cdn.prod.website-files.com/68baa907f46485600e606eb9/68f852405d417dc7bc4e4275_im1-p-500.jpg 500w, https://cdn.prod.website-files.com/68baa907f46485600e606eb9/68f852405d417dc7bc4e4275_im1-p-800.jpg 800w, https://cdn.prod.website-files.com/68baa907f46485600e606eb9/68f852405d417dc7bc4e4275_im1.jpg 904w"
+           sizes="(max-width: 760px) 100vw, 50vw"
+           alt="Ethos" loading="lazy">
+    </div>
+
+    <div class="slurp-behind-item">
+      <div>
+        <h3>Process</h3>
+        <p>At Slurp, every bowl begins with intention. We do everything from scratch, noodles, broth, tare made fresh in-house and adjusted daily to match the season, the humidity, and the rhythm of the kitchen.<br><br>Our broths simmer for hours to entire days, to build depth, clarity, and flavour. Our noodles are rolled and cut each morning to the exact texture we want. Every component is crafted with purpose, tested, and refined until it&rsquo;s right.<br><br>We don&rsquo;t cut corners. We taste, measure, and adjust until every bowl hits the mark, simple, consistent, and uncompromising.<br><br>Every bowl is crafted never repeated, always perfected.</p>
+      </div>
+      <img src="https://cdn.prod.website-files.com/68baa907f46485600e606eb9/68f8526b5ff233f309978f2e_im2.jpg"
+           srcset="https://cdn.prod.website-files.com/68baa907f46485600e606eb9/68f8526b5ff233f309978f2e_im2-p-500.jpg 500w, https://cdn.prod.website-files.com/68baa907f46485600e606eb9/68f8526b5ff233f309978f2e_im2-p-800.jpg 800w, https://cdn.prod.website-files.com/68baa907f46485600e606eb9/68f8526b5ff233f309978f2e_im2.jpg 904w"
+           sizes="(max-width: 760px) 100vw, 50vw"
+           alt="Process" loading="lazy">
+    </div>
+
+    <div class="slurp-behind-item">
+      <div>
+        <h3>Supplier List</h3>
+        <p>Our ingredients come from people we trust - farmers, millers, and producers who share our respect for quality and craft.<br><br>We use organic whenever we can, sourcing locally from Denmark like &Oslash;land flour from Bornholm and organic free-range Danish pork. For the few things we can&rsquo;t find here, we look to Japan: soy sauce, miso, and other essentials that define true ramen.<br><br>It&rsquo;s simple, we keep it as local, honest, and affordable as possible. When we can&rsquo;t, we go straight to the source.<br><br>Are you an independent farmer or producer? We&rsquo;d love to hear from you get in touch with us.</p>
+      </div>
+      <img src="https://cdn.prod.website-files.com/68baa907f46485600e606eb9/68f852795390316cdbf0f944_im3.jpg"
+           srcset="https://cdn.prod.website-files.com/68baa907f46485600e606eb9/68f852795390316cdbf0f944_im3-p-500.jpg 500w, https://cdn.prod.website-files.com/68baa907f46485600e606eb9/68f852795390316cdbf0f944_im3-p-800.jpg 800w, https://cdn.prod.website-files.com/68baa907f46485600e606eb9/68f852795390316cdbf0f944_im3.jpg 904w"
+           sizes="(max-width: 760px) 100vw, 50vw"
+           alt="Supplier List" loading="lazy">
+    </div>
+
+    <div class="slurp-behind-item">
+      <div>
+        <h3>A Love Letter to Suzy</h3>
+        <p>Silent, but saying everything.<br>You wake before us&mdash;<br>steel hands, soft heart.<br><br>Pressing, folding, cutting<br>with ritual, not routine.<br>No ego. No shortcuts.<br>Just golden strands,<br>lined like soldiers,<br>ready for broth, steam, fire.<br><br>They call it craft.<br>We call it care.<br>It starts with you, Suzy&mdash;our Japanese clockwork,<br>our calm in the chaos,<br>our heartbeat in the heat.</p>
+      </div>
+      <img src="https://cdn.prod.website-files.com/68baa907f46485600e606eb9/68f85285e706bb0aab8ce911_im4.jpg"
+           srcset="https://cdn.prod.website-files.com/68baa907f46485600e606eb9/68f85285e706bb0aab8ce911_im4-p-500.jpg 500w, https://cdn.prod.website-files.com/68baa907f46485600e606eb9/68f85285e706bb0aab8ce911_im4-p-800.jpg 800w, https://cdn.prod.website-files.com/68baa907f46485600e606eb9/68f85285e706bb0aab8ce911_im4.jpg 904w"
+           sizes="(max-width: 760px) 100vw, 50vw"
+           alt="A Love Letter to Suzy" loading="lazy">
+    </div>
+
+  </div>
+</section>
+
+
+<section id="contact" class="slurp-footer slurp-section">
+  <div class="slurp-container">
+    <div class="slurp-footer-grid">
+      <div class="slurp-footer-col">
+        <h4>Restaurants</h4>
+        <div class="slurp-footer-item">Nansensgade 90,<br>1366 Copenhagen</div>
+        <a class="slurp-footer-link" href="https://www.findsmiley.dk/1430147" target="_blank" rel="noopener"><span class="slurp-dot"></span>Smiley report</a>
+        <div class="slurp-footer-item" style="margin-top:1rem">Borgergade 16,<br>1300 Copenhagen</div>
+        <a class="slurp-footer-link" href="https://www.findsmiley.dk/1456913" target="_blank" rel="noopener"><span class="slurp-dot"></span>Smiley report</a>
+      </div>
+      <div class="slurp-footer-col">
+        <h4>Opening Hours</h4>
+        <div class="slurp-footer-item">Monday to Sunday</div>
+        <div class="slurp-footer-item">Nansensgade<br>11:30-15 &amp; 16-21</div>
+        <div class="slurp-footer-item">Borgergade<br>11:30-15 &amp; 17-22</div>
+      </div>
+      <div class="slurp-footer-col">
+        <h4>Contact</h4>
+        <a class="slurp-footer-link" href="mailto:hello@slurpramen.dk"><span class="slurp-dot"></span>hello@slurpramen.dk</a>
+        <a class="slurp-footer-link" href="https://www.instagram.com/slurp/" target="_blank" rel="noopener"><span class="slurp-dot"></span>Instagram</a>
+        <div class="slurp-footer-link slurp-newsletter-toggle" data-target="#slurp-newsletter-form-home" role="button" tabindex="0"><span class="slurp-dot"></span>Newsletter Signup</div>
+        <form class="slurp-newsletter-form" id="slurp-newsletter-form-home">
+          <label class="slurp-visually-hidden" for="slurp-newsletter-form-home-email">Email address</label>
+          <input id="slurp-newsletter-form-home-email" type="email" name="email" placeholder="Your email" required>
+          <button type="submit">Sign up</button>
+        </form>
+        <div class="slurp-newsletter-msg"></div>
+        <a class="slurp-footer-link" href="https://tally.so/r/3E64xL" target="_blank" rel="noopener"><span class="slurp-dot"></span>Join the team</a>
+      </div>
+      <div class="slurp-footer-col">
+        <h4>Frequently Asked Questions</h4>
+        <div class="slurp-faq">
+        <div class="slurp-faq-item">
+          <div class="slurp-faq-q"><span class="slurp-dot"></span>Reservations &amp; Groups</div>
+          <div class="slurp-faq-a">We do not take reservations and our restaurants are not well suited to big groups. Your best chance is to show up before we open and get in on the first seat, or get ready to be split up!</div>
+        </div>
+
+        <div class="slurp-faq-item">
+          <div class="slurp-faq-q"><span class="slurp-dot"></span>Dietaries</div>
+          <div class="slurp-faq-a">Our veggie ramen is vegan without the egg. Lots of other dietaries can be catered, we will reply to any other specific dietaries. Please always let us know of any allergies when ordering your food. For the time being we unfortunately cannot accommodate gluten free.</div>
+        </div>
+
+        <div class="slurp-faq-item">
+          <div class="slurp-faq-q"><span class="slurp-dot"></span>Giftcards</div>
+          <div class="slurp-faq-a">Giftcards can be purchased on the Store section of our website. They can be redeemed at both our restaurants.</div>
+        </div>
+
+        <div class="slurp-faq-item">
+          <div class="slurp-faq-q"><span class="slurp-dot"></span>Dog &amp; Giraffe Policy</div>
+          <div class="slurp-faq-a">We happily welcome dogs to both our restaurants (and occasionally giraffes - max 3.25m tall).</div>
+        </div>
+        </div>
+      </div>
+    </div>
+    <div class="slurp-footer-logos">
+      <img src="https://cdn.prod.website-files.com/68baa907f46485600e606eb9/68c79243b6742cb4ac9e6b65_cbacea2ccce266a8fa1f1abbeee158b1_logo-full.svg" alt="Slurp" loading="lazy">
+    </div>
+    <div class="slurp-creditos">
+      <div>Slurp &copy; 2025. We only use functional cookies.</div>
+      <a class="slurp-creditos-der" href="https://www.studiomorfar.com/" target="_blank" rel="noopener">
+        <span>Made with</span>
+        <img src="https://cdn.prod.website-files.com/68baa907f46485600e606eb9/68c79f71497f18f55019b655_cora.svg" alt="" loading="lazy">
+        <span>from Studio Morfar</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script>
+(function () {
+  var toggle = document.querySelector(".slurp-nav-toggle");
+  var close = document.querySelector(".slurp-nav-close");
+  var nav = document.querySelector(".slurp-nav");
+  function openNav() {
+    nav.classList.add("is-open");
+    close.classList.add("is-open");
+    document.documentElement.style.overflow = "hidden";
+  }
+  function closeNav() {
+    nav.classList.remove("is-open");
+    close.classList.remove("is-open");
+    document.documentElement.style.overflow = "";
+  }
+  if (toggle) toggle.addEventListener("click", openNav);
+  if (close) close.addEventListener("click", closeNav);
+  if (nav) {
+    nav.querySelectorAll("a").forEach(function (a) {
+      a.addEventListener("click", closeNav);
+    });
+  }
+
+  document.querySelectorAll(".slurp-faq-q").forEach(function (q) {
+    q.addEventListener("click", function () {
+      q.closest(".slurp-faq-item").classList.toggle("is-open");
+    });
+  });
+
+  document.querySelectorAll(".slurp-newsletter-toggle").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var form = document.querySelector(btn.getAttribute("data-target"));
+      if (form) form.classList.toggle("is-open");
+    });
+  });
+
+  document.querySelectorAll(".slurp-newsletter-form").forEach(function (form) {
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var msg = form.parentElement.querySelector(".slurp-newsletter-msg");
+      if (msg) {
+        msg.textContent = "Thanks for signing up!";
+        msg.classList.add("is-visible");
+      }
+      form.reset();
+    });
+  });
+})();
+</script>
+</body>
+</html>
