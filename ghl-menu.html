@@ -3,53 +3,52 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Menu | Slurp</title>
+<title>Menu | Tata Pizza</title>
 <style>
 :root {
-  --cream: #fff6ea;
-  --red: #bd2025;
-  --red-25: rgba(189, 32, 37, .25);
-  --cream-25: rgba(255, 246, 234, .25);
+  --green: #1b7a4c;
+  --green-dark: #145c39;
+  --cream: #f7f4ec;
+  --ink: #1a1a1a;
+  --gray: #55554f;
+  --gray-25: rgba(26, 26, 26, .15);
+  --white: #ffffff;
   --gap: 1.5rem;
   --maxw: 1200px;
 }
 
 * { box-sizing: border-box; }
 
-@font-face {
-  font-family: "Altpicaro Official";
-  src: url("https://cdn.prod.website-files.com/68baa907f46485600e606eb9/68f84fae25a305cd0c5d3222_ALTPicaro-Regular.woff") format("woff");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
 html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
   background-color: var(--cream);
-  color: var(--red);
-  font-family: "Altpicaro Official", Arial, sans-serif;
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   font-size: 16px;
-  line-height: 1.4;
+  line-height: 1.5;
+}
+
+h1, h2, h3, h4 {
+  margin: 0;
+  font-weight: 700;
+  font-family: Georgia, "Times New Roman", serif;
 }
 
 img { max-width: 100%; display: block; }
 
 a { color: inherit; text-decoration: none; }
 
-h1, h2, h3, h4 { margin: 0; font-weight: 400; }
-
 p { margin: 0 0 .75em; }
 
-.slurp-container {
+.tata-container {
   max-width: var(--maxw);
   margin: 0 auto;
   padding: 0 1.5rem;
 }
 
-.slurp-visually-hidden {
+.tata-visually-hidden {
   position: absolute;
   width: 1px; height: 1px;
   overflow: hidden;
@@ -58,15 +57,15 @@ p { margin: 0 0 .75em; }
 }
 
 /* ---------- Header / Nav ---------- */
-.slurp-header {
+.tata-header {
   position: sticky;
   top: 0;
   z-index: 100;
-  background-color: var(--cream);
-  border-bottom: 1px solid var(--red-25);
+  background-color: var(--green);
+  border-bottom: 1px solid rgba(255,255,255,.15);
 }
 
-.slurp-header-inner {
+.tata-header-inner {
   max-width: var(--maxw);
   margin: 0 auto;
   padding: 1rem 1.5rem;
@@ -76,62 +75,72 @@ p { margin: 0 0 .75em; }
   gap: 1rem;
 }
 
-.slurp-logo {
-  font-size: 1.4rem;
+.tata-logo {
+  font-size: 1.6rem;
   letter-spacing: .04em;
   text-transform: uppercase;
+  color: var(--white);
   flex: none;
 }
 
-.slurp-nav {
+.tata-nav {
   display: flex;
   align-items: center;
   gap: 1.75rem;
   flex-wrap: wrap;
 }
 
-.slurp-nav a {
+.tata-nav a {
   font-size: .95rem;
   letter-spacing: .02em;
   white-space: nowrap;
+  color: var(--white);
   border-bottom: 1px solid transparent;
   transition: border-color .2s ease;
 }
 
-.slurp-nav a:hover { border-color: var(--red); }
+.tata-nav a:hover { border-color: var(--white); }
 
-.slurp-nav-toggle {
+.tata-nav-order {
+  background-color: var(--white);
+  color: var(--green-dark) !important;
+  padding: .5em 1.1em;
+  border-radius: .35em;
+  font-weight: 700;
+}
+
+.tata-nav-toggle {
   display: none;
   background: none;
   border: 0;
   cursor: pointer;
-  color: var(--red);
+  color: var(--white);
   font-family: inherit;
   font-size: .95rem;
   padding: .4em .2em;
 }
 
-.slurp-nav-close {
+.tata-nav-close {
   display: none;
 }
 
 @media (max-width: 860px) {
-  .slurp-nav {
+  .tata-nav {
     display: none;
     position: fixed;
     inset: 0;
     top: 0;
-    background-color: var(--cream);
+    background-color: var(--green);
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 2rem;
     z-index: 99;
   }
-  .slurp-nav.is-open { display: flex; }
-  .slurp-nav a { font-size: 1.4rem; }
-  .slurp-nav-toggle { display: block; }
-  .slurp-nav-close {
+  .tata-nav.is-open { display: flex; }
+  .tata-nav a { font-size: 1.4rem; }
+  .tata-nav-toggle { display: block; }
+  .tata-nav-close {
     display: none;
     position: fixed;
     top: 1.1rem;
@@ -140,214 +149,178 @@ p { margin: 0 0 .75em; }
     background: none;
     border: 0;
     cursor: pointer;
-    color: var(--red);
+    color: var(--white);
     font-family: inherit;
     font-size: .95rem;
   }
-  .slurp-nav.is-open ~ .slurp-nav-close,
-  .slurp-nav-close.is-open { display: block; }
+  .tata-nav.is-open ~ .tata-nav-close,
+  .tata-nav-close.is-open { display: block; }
 }
 
 /* ---------- Hero ---------- */
-.slurp-hero {
+.tata-hero {
   position: relative;
-  min-height: 88vh;
+  min-height: 70vh;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   overflow: hidden;
-  color: var(--cream);
+  color: var(--white);
+  background: radial-gradient(circle at 50% 20%, var(--green) 0%, var(--green-dark) 75%);
+  padding: 4rem 1.5rem;
 }
 
-.slurp-hero video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 0;
-}
-
-.slurp-hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(0,0,0,.05) 0%, rgba(0,0,0,.35) 100%);
-  z-index: 1;
-}
-
-.slurp-hero-content {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  padding: 2rem 1.5rem 3rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  max-width: var(--maxw);
-  margin: 0 auto;
-}
-
-.slurp-hero-title {
-  font-size: clamp(2.5rem, 8vw, 5rem);
-  line-height: .95;
+.tata-hero-eyebrow {
+  font-size: .9rem;
+  letter-spacing: .18em;
   text-transform: uppercase;
-}
-
-.slurp-hero-sub {
-  text-align: right;
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
-/* ---------- Sections ---------- */
-.slurp-section {
-  padding: 5rem 0;
-}
-
-.slurp-section-title {
-  font-size: 1.1rem;
-  text-transform: uppercase;
-  letter-spacing: .08em;
-  margin-bottom: 2rem;
-}
-
-/* About */
-.slurp-about {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: var(--gap);
-}
-
-.slurp-about-copy { font-size: 1.4rem; line-height: 1.3; }
-
-.slurp-quotes {
-  margin-top: 3rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  flex-wrap: wrap;
-  gap: 2rem;
-  border-top: 1px solid var(--red-25);
-  padding-top: 2rem;
-}
-
-.slurp-quotes-text { max-width: 32rem; font-size: .95rem; }
-
-.slurp-quotes-author {
-  display: flex;
-  align-items: flex-end;
-  gap: 1rem;
-  text-align: right;
-  font-size: .95rem;
-}
-
-.slurp-quotes-author img {
-  width: 5.5rem;
-  border-radius: .35em;
-}
-
-@media (max-width: 760px) {
-  .slurp-about { grid-template-columns: 1fr; }
-  .slurp-quotes { flex-direction: column; align-items: flex-start; }
-  .slurp-quotes-author { text-align: left; }
-}
-
-/* Restaurants */
-.slurp-locales {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--gap);
-}
-
-@media (max-width: 760px) {
-  .slurp-locales { grid-template-columns: 1fr; }
-}
-
-.slurp-local video {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  border-radius: .35em;
-  display: block;
-}
-
-.slurp-local-texto { margin-top: 1rem; }
-
-.slurp-local-desc { margin-top: .75rem; font-size: .95rem; }
-
-.slurp-local-tags {
-  display: flex;
-  gap: .5rem;
-  flex-wrap: wrap;
-  margin-top: .75rem;
-}
-
-.slurp-tag {
-  border: 1px solid var(--red-25);
-  border-radius: .35em;
-  padding: .3em .7em;
-  font-size: .8rem;
-}
-
-/* Behind the Bowl */
-.slurp-behind-item {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2.5rem;
-  align-items: start;
-  padding: 2.5rem 0;
-  border-top: 1px solid var(--red-25);
-}
-
-.slurp-behind-item:first-of-type { border-top: none; }
-
-.slurp-behind-item h3 {
-  font-size: 1.6rem;
+  opacity: .85;
   margin-bottom: 1rem;
 }
 
-.slurp-behind-item p { font-size: .95rem; }
+.tata-hero-title {
+  font-size: clamp(3rem, 10vw, 6rem);
+  line-height: .95;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
 
-.slurp-behind-item img { border-radius: .35em; }
+.tata-hero-sub {
+  font-size: 1.2rem;
+  max-width: 34rem;
+  margin: 0 auto 2rem;
+  opacity: .92;
+}
+
+.tata-hero-ctas {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.tata-btn {
+  display: inline-block;
+  padding: .8em 1.6em;
+  border-radius: .4em;
+  font-weight: 700;
+  font-size: .95rem;
+  letter-spacing: .02em;
+}
+
+.tata-btn-primary {
+  background-color: var(--white);
+  color: var(--green-dark);
+}
+
+.tata-btn-outline {
+  border: 1px solid rgba(255,255,255,.6);
+  color: var(--white);
+}
+
+/* ---------- Sections ---------- */
+.tata-section {
+  padding: 5rem 0;
+}
+
+.tata-section-eyebrow {
+  font-size: .85rem;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--green);
+  margin-bottom: .5rem;
+}
+
+.tata-section-title {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+/* About */
+.tata-about {
+  max-width: 44rem;
+}
+
+.tata-about p {
+  font-size: 1.1rem;
+  color: var(--gray);
+}
+
+/* Order Now */
+.tata-order-section {
+  background-color: var(--green);
+  color: var(--white);
+}
+
+.tata-order-section .tata-section-eyebrow { color: rgba(255,255,255,.8); }
+
+.tata-order-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gap);
+  margin-top: 2rem;
+}
 
 @media (max-width: 760px) {
-  .slurp-behind-item { grid-template-columns: 1fr; }
-  .slurp-behind-item img { order: -1; }
+  .tata-order-grid { grid-template-columns: 1fr; }
+}
+
+.tata-order-card {
+  background-color: var(--white);
+  color: var(--ink);
+  border-radius: .6em;
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+
+.tata-order-card-name {
+  font-size: 1.2rem;
+  margin-bottom: .5rem;
+}
+
+.tata-order-card-desc {
+  font-size: .9rem;
+  color: var(--gray);
+  margin-bottom: 1.5rem;
 }
 
 /* ---------- Footer / Contact ---------- */
-.slurp-footer {
+.tata-footer {
   padding: 4rem 0 2rem;
-  border-top: 1px solid var(--red-25);
+  background-color: var(--ink);
+  color: var(--cream);
 }
 
-.slurp-footer-grid {
+.tata-footer-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: var(--gap);
 }
 
 @media (max-width: 900px) {
-  .slurp-footer-grid { grid-template-columns: 1fr 1fr; }
+  .tata-footer-grid { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 560px) {
-  .slurp-footer-grid { grid-template-columns: 1fr; }
+  .tata-footer-grid { grid-template-columns: 1fr; }
 }
 
-.slurp-footer-col h4 {
+.tata-footer-col h4 {
   font-size: .95rem;
   text-transform: uppercase;
   letter-spacing: .04em;
   margin-bottom: 1rem;
+  color: var(--white);
 }
 
-.slurp-footer-item {
+.tata-footer-item {
   font-size: .9rem;
   margin-bottom: .6rem;
+  opacity: .85;
 }
 
-.slurp-footer-link {
+.tata-footer-link {
   display: inline-flex;
   align-items: center;
   gap: .5rem;
@@ -355,23 +328,23 @@ p { margin: 0 0 .75em; }
   margin-bottom: .6rem;
   cursor: pointer;
   border-bottom: 1px solid transparent;
+  opacity: .9;
 }
 
-.slurp-footer-link:hover { border-color: var(--red); }
+.tata-footer-link:hover { border-color: var(--cream); opacity: 1; }
 
-.slurp-dot {
+.tata-dot {
   width: .4rem;
   height: .4rem;
   border-radius: 50%;
-  background: var(--red);
-  opacity: .5;
+  background: var(--green);
   flex: none;
 }
 
 /* FAQ accordion */
-.slurp-faq-item { margin-bottom: .3rem; }
+.tata-faq-item { margin-bottom: .3rem; }
 
-.slurp-faq-q {
+.tata-faq-q {
   cursor: pointer;
   font-size: .9rem;
   display: flex;
@@ -380,508 +353,210 @@ p { margin: 0 0 .75em; }
   padding: .3rem 0;
 }
 
-.slurp-faq-a {
+.tata-faq-a {
   max-height: 0;
   overflow: hidden;
   font-size: .85rem;
-  opacity: .85;
+  opacity: .75;
   transition: max-height .3s ease, padding .3s ease;
 }
 
-.slurp-faq-item.is-open .slurp-faq-a {
+.tata-faq-item.is-open .tata-faq-a {
   max-height: 20em;
   padding: .3rem 0 1rem;
 }
 
 /* Newsletter */
-.slurp-newsletter-form {
+.tata-newsletter-form {
   display: none;
   margin-top: .75rem;
   gap: .5rem;
 }
 
-.slurp-newsletter-form.is-open { display: flex; }
+.tata-newsletter-form.is-open { display: flex; }
 
-.slurp-newsletter-form input[type="email"] {
+.tata-newsletter-form input[type="email"] {
   flex: 1;
   min-width: 0;
   background: transparent;
   border: 0;
-  border-bottom: 1px solid var(--red);
-  color: var(--red);
+  border-bottom: 1px solid var(--cream);
+  color: var(--cream);
   font-family: inherit;
   font-size: .9rem;
   padding: .3em 0;
 }
 
-.slurp-newsletter-form input[type="email"]::placeholder { color: var(--red-25); }
+.tata-newsletter-form input[type="email"]::placeholder { color: rgba(247,244,236,.5); }
 
-.slurp-newsletter-form button {
+.tata-newsletter-form button {
   background: none;
-  border: 1px solid var(--red);
+  border: 1px solid var(--cream);
   border-radius: .35em;
-  color: var(--red);
+  color: var(--cream);
   font-family: inherit;
   font-size: .85rem;
   padding: .3em .8em;
   cursor: pointer;
 }
 
-.slurp-newsletter-msg {
+.tata-newsletter-msg {
   font-size: .8rem;
   margin-top: .5rem;
   display: none;
 }
 
-.slurp-newsletter-msg.is-visible { display: block; }
+.tata-newsletter-msg.is-visible { display: block; }
 
-.slurp-footer-logos {
-  display: flex;
-  justify-content: center;
-  margin: 3rem 0 2rem;
-}
-
-.slurp-footer-logos img { max-width: 14rem; }
-
-.slurp-creditos {
+.tata-creditos {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   gap: 1rem;
   font-size: .8rem;
-  border-top: 1px solid var(--red-25);
+  opacity: .7;
+  border-top: 1px solid rgba(247,244,236,.15);
   padding-top: 1.5rem;
+  margin-top: 3rem;
 }
-
-.slurp-creditos-der {
-  display: flex;
-  align-items: center;
-  gap: .4rem;
-}
-
-.slurp-creditos-der img { width: 1rem; }
 
 /* ---------- Menu page ---------- */
-.slurp-menu-hero {
-  padding: 7rem 0 2rem;
-  text-align: center;
+.tata-menu-hero {
+  background-color: var(--green);
+  color: var(--white);
+  padding: 3.5rem 0 2.5rem;
 }
 
-.slurp-menu-hero h1 {
+.tata-menu-hero h1 {
   font-size: clamp(2rem, 6vw, 3.2rem);
-  text-transform: uppercase;
 }
 
-.slurp-menu-group { margin-bottom: 3.5rem; }
-
-.slurp-menu-group-title {
-  display: flex;
-  align-items: center;
-  gap: .6rem;
-  font-size: 1.3rem;
-  text-transform: uppercase;
-  letter-spacing: .04em;
-  border-bottom: 1px solid var(--red-25);
-  padding-bottom: .75rem;
-  margin-bottom: 1.25rem;
-}
-
-.slurp-menu-group-title img { width: 1.4rem; height: 1.4rem; }
-
-.slurp-menu-item {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 1rem;
-  padding: 1rem 0;
-  border-bottom: 1px dotted var(--red-25);
-}
-
-.slurp-menu-item:last-child { border-bottom: none; }
-
-.slurp-menu-item-name {
-  display: flex;
-  align-items: baseline;
-  gap: .6rem;
-  flex-wrap: wrap;
-  font-size: 1.05rem;
-}
-
-.slurp-menu-item-badge {
-  font-size: .7rem;
-  text-transform: uppercase;
-  letter-spacing: .03em;
-  border: 1px solid var(--red-25);
-  border-radius: .3em;
-  padding: .1em .5em;
-  opacity: .8;
-}
-
-.slurp-menu-item-desc {
-  font-size: .85rem;
+.tata-menu-hero-sub {
+  margin-top: .5rem;
   opacity: .85;
-  margin-top: .3rem;
+  font-size: .95rem;
 }
 
-.slurp-menu-item-desc p { margin: 0 0 .2em; }
+.tata-menu-body {
+  background-color: var(--green);
+  padding: 2.5rem 0 5rem;
+}
 
-.slurp-menu-item-price {
+.tata-menu-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+@media (max-width: 760px) {
+  .tata-menu-grid { grid-template-columns: 1fr; }
+}
+
+.tata-menu-card {
+  background-color: var(--white);
+  border-radius: .6em;
+  padding: 1.5rem;
+}
+
+.tata-menu-card-name {
+  font-size: 1.05rem;
+  margin-bottom: .5rem;
+}
+
+.tata-menu-card-desc {
+  font-size: .9rem;
+  color: var(--gray);
+  margin-bottom: .75rem;
+}
+
+.tata-menu-card-price {
   font-size: 1rem;
-  white-space: nowrap;
-  align-self: start;
+  font-weight: 700;
 }
 </style>
 </head>
 <body>
 
 
-<header class="slurp-header">
-  <div class="slurp-header-inner">
-    <a href="/" class="slurp-logo">Slurp</a>
-    <button class="slurp-nav-toggle" type="button" aria-label="Open menu">Menu</button>
-    <nav class="slurp-nav" aria-label="Primary">
+<header class="tata-header">
+  <div class="tata-header-inner">
+    <a href="/" class="tata-logo">Tata</a>
+    <button class="tata-nav-toggle" type="button" aria-label="Open menu">Menu</button>
+    <nav class="tata-nav" aria-label="Primary">
       <a href="/">Home</a>
-      <a href="#restaurant">Restaurants</a>
-      <a href="#behind">Behind the Bowl</a>
       <a href="/menu">Menu</a>
-      <a href="#contact">Contact &amp; Info</a>
-      <a href="/store">Store</a>
-      <a href="/order">Online Ordering</a>
+      <a href="/#contact">Contact &amp; Info</a>
+      <a href="/#order" class="tata-nav-order">Order Now</a>
     </nav>
-    <button class="slurp-nav-close" type="button" aria-label="Close menu">Close</button>
+    <button class="tata-nav-close" type="button" aria-label="Close menu">Close</button>
   </div>
 </header>
 
 <main>
 
-<section class="slurp-menu-hero">
-  <div class="slurp-container">
-    <h1>Menu</h1>
+<section class="tata-menu-hero">
+  <div class="tata-container">
+    <h1>New York Style Pizza</h1>
+    <div class="tata-menu-hero-sub">Available 11:20 am - 10:00 pm</div>
   </div>
 </section>
 
-<section class="slurp-section" style="padding-top:0">
-  <div class="slurp-container">
 
-    <div class="slurp-menu-group">
-      <div class="slurp-menu-group-title">
-        <img src="https://cdn.prod.website-files.com/68baa907f46485600e606eb9/6908cd118a1ec861ae51a25e_Ramen_01.svg" alt="" loading="lazy">
-        <span>Ramen</span>
+<section class="tata-menu-body">
+  <div class="tata-container">
+    <div class="tata-menu-grid">
+      <div class="tata-menu-card">
+        <div class="tata-menu-card-name">Medium 12" New York Style Pizza</div>
+        <div class="tata-menu-card-desc">Traditional New York Style thin crust pizza made with daily fresh dough. Topped with our special sauce and real 100% mozzarella cheese.</div>
+        <div class="tata-menu-card-price">$13.25</div>
       </div>
-      
-      <div class="slurp-menu-item">
-        <div>
-          <div class="slurp-menu-item-name">Shoyu
-          
-          </div>
-          <div class="slurp-menu-item-desc"><p>Chicken broth w. chashu, tamago, spring onions, mushroom paste, asparagus, garden sorrel.</p><p>Tea pairing: Hōjicha</p></div>
-        </div>
-        <div class="slurp-menu-item-price">185 DKK</div>
+      <div class="tata-menu-card">
+        <div class="tata-menu-card-name">Large 14" New York Style Pizza</div>
+        <div class="tata-menu-card-desc">Traditional New York Style thin crust pizza made with daily fresh dough. Topped with our special sauce and real 100% mozzarella cheese.</div>
+        <div class="tata-menu-card-price">$15.25</div>
       </div>
-      <div class="slurp-menu-item">
-        <div>
-          <div class="slurp-menu-item-name">Shio
-          
-          </div>
-          <div class="slurp-menu-item-desc"><p>Chicken + smoked mackerel and seafood broth with chashu, tamago, spring onions, daikon, red pepper corns, rucola and basil, lemon thyme.</p><p>Tea pairing: Sencha</p></div>
-        </div>
-        <div class="slurp-menu-item-price">185 DKK</div>
+      <div class="tata-menu-card">
+        <div class="tata-menu-card-name">Extra Large 16" New York Style Pizza</div>
+        <div class="tata-menu-card-desc">Traditional New York Style thin crust pizza made with daily fresh dough. Topped with our special sauce and real 100% mozzarella cheese.</div>
+        <div class="tata-menu-card-price">$17.25</div>
       </div>
-      <div class="slurp-menu-item">
-        <div>
-          <div class="slurp-menu-item-name">Veggie
-          <span class="slurp-menu-item-badge">Vegetarian</span>
-          </div>
-          <div class="slurp-menu-item-desc"><p>Mushroom + celeriac broth with oyster mushroom, tamago, kale, pickled fennel, red onion, lemon thyme.</p><p>Can be made vegan.</p><p>Tea pairing: Bancha</p></div>
-        </div>
-        <div class="slurp-menu-item-price">175 DKK</div>
+      <div class="tata-menu-card">
+        <div class="tata-menu-card-name">Bianca Pizza (Extra Large)</div>
+        <div class="tata-menu-card-desc">A creamy white pizza topped with fresh ricotta, grated parmesan, and melted mozzarella on our signature New York–style crust. Made fresh daily with real 100% mozzarella cheese.</div>
+        <div class="tata-menu-card-price">$21.99</div>
       </div>
-      <div class="slurp-menu-item">
-        <div>
-          <div class="slurp-menu-item-name">Nduja Miso
-          
-          </div>
-          <div class="slurp-menu-item-desc"><p>Tori paitan (creamy chicken broth) with nduja butter broth, spicy minced pork, tamago, spring onions, pak choi, anchovy lemon dressing, bean sprouts, burnt onion oil.</p><p>Tea pairing: Sobacha</p></div>
-        </div>
-        <div class="slurp-menu-item-price">195 DKK</div>
+      <div class="tata-menu-card">
+        <div class="tata-menu-card-name">Bianca Pizza (Large)</div>
+        <div class="tata-menu-card-desc">A creamy white pizza topped with fresh ricotta, grated parmesan, and melted mozzarella on our signature New York–style crust. Made fresh daily with real 100% mozzarella cheese.</div>
+        <div class="tata-menu-card-price">$18.99</div>
       </div>
-      <div class="slurp-menu-item">
-        <div>
-          <div class="slurp-menu-item-name">Himawari Miso Ramen
-          <span class="slurp-menu-item-badge">Vegetarian</span>
-          <span class="slurp-menu-item-badge">Nansensgade</span>
-          </div>
-          <div class="slurp-menu-item-desc"><p>Creamy miso and sunflower seeds broth w. smoky leeks, celery salad, toasted sunflower seeds, chilli oil, spring onions oil chef’s rec: chilli crunch 20</p></div>
-        </div>
-        <div class="slurp-menu-item-price">180 DKK</div>
+      <div class="tata-menu-card">
+        <div class="tata-menu-card-name">Bianca Pizza (Medium)</div>
+        <div class="tata-menu-card-desc">A creamy white pizza topped with fresh ricotta, grated parmesan, and melted mozzarella on our signature New York–style crust. Made fresh daily with real 100% mozzarella cheese.</div>
+        <div class="tata-menu-card-price">$15.99</div>
       </div>
-      <div class="slurp-menu-item">
-        <div>
-          <div class="slurp-menu-item-name">Specialty Ramen (Dinner Only) Limited Portions 15 / Per Day
-          <span class="slurp-menu-item-badge">Borgergade</span>
-          </div>
-          <div class="slurp-menu-item-desc"><p>Tonkotsu (Pork Paitan) w. chashu (pork belly), tamago, spring onions, pickled turnips, pickled pearl onion</p></div>
-        </div>
-        <div class="slurp-menu-item-price">210 DKK</div>
+      <div class="tata-menu-card">
+        <div class="tata-menu-card-name">Meat Feast Pizza</div>
+        <div class="tata-menu-card-desc">A hearty New York style pizza made fresh daily with our signature dough, special tomato sauce, and 100% real mozzarella cheese. Loaded with pepperoni, sausage, bacon, and ground beef for the ultimate meat lover's pie.</div>
+        <div class="tata-menu-card-price">$22.99</div>
+      </div>
+      <div class="tata-menu-card">
+        <div class="tata-menu-card-name">Mountain Pizza</div>
+        <div class="tata-menu-card-desc">A classic New York–style pizza made fresh daily with our signature dough, special sauce, and 100% real mozzarella cheese. Loaded with pepperoni, sausage, bacon, ground beef, onions, green peppers, black olives, and mushrooms.</div>
+        <div class="tata-menu-card-price">$20.99</div>
+      </div>
+      <div class="tata-menu-card">
+        <div class="tata-menu-card-name">Sicilian Pizza</div>
+        <div class="tata-menu-card-desc">A thick, square-cut New York–inspired Sicilian pizza made fresh daily with our homemade dough. Baked to a golden crust and topped with our special sauce, Romano, and 100% real mozzarella cheese.</div>
+        <div class="tata-menu-card-price">$22.99</div>
+      </div>
+      <div class="tata-menu-card">
+        <div class="tata-menu-card-name">Veggie Pizza</div>
+        <div class="tata-menu-card-desc">A classic New York style pizza made fresh daily with our signature dough, special sauce, and 100% real mozzarella cheese. Topped with onions, green peppers, black olives, and mushrooms — or customize it with your favorite toppings.</div>
+        <div class="tata-menu-card-price">$21.99</div>
       </div>
     </div>
-
-    <div class="slurp-menu-group">
-      <div class="slurp-menu-group-title">
-        <img src="https://cdn.prod.website-files.com/68baa907f46485600e606eb9/6908cd13ae7898e630601602_Snacks.svg" alt="" loading="lazy">
-        <span>Snacks</span>
-      </div>
-      
-      <div class="slurp-menu-item">
-        <div>
-          <div class="slurp-menu-item-name">Gyoza
-          <span class="slurp-menu-item-badge">Borgergade</span>
-          </div>
-          <div class="slurp-menu-item-desc"><p>Pork, cabbage, ginger and spring onion filling with a side of soy dressing</p><p>4 pcs. (dinner only)</p></div>
-        </div>
-        <div class="slurp-menu-item-price">95 DKK</div>
-      </div>
-      <div class="slurp-menu-item">
-        <div>
-          <div class="slurp-menu-item-name">Amazu Plate
-          <span class="slurp-menu-item-badge">Vegan</span>
-          </div>
-          <div class="slurp-menu-item-desc"><p>Pickled carrots, daikon and cucumber</p></div>
-        </div>
-        <div class="slurp-menu-item-price">60 DKK</div>
-      </div>
-      <div class="slurp-menu-item">
-        <div>
-          <div class="slurp-menu-item-name">Karaage Chicken
-          
-          </div>
-          <div class="slurp-menu-item-desc"><p>Deep fried chicken with Japanese mayonnaise</p></div>
-        </div>
-        <div class="slurp-menu-item-price">120 DKK</div>
-      </div>
-      <div class="slurp-menu-item">
-        <div>
-          <div class="slurp-menu-item-name">Gyoza
-          <span class="slurp-menu-item-badge">Nansensgade</span>
-          </div>
-          <div class="slurp-menu-item-desc"><p>Beef and spring onions filling. Served with mustard sauce</p></div>
-        </div>
-        <div class="slurp-menu-item-price">120 DKK</div>
-      </div>
-      <div class="slurp-menu-item">
-        <div>
-          <div class="slurp-menu-item-name">Tofu Padron peppers (3 pcs)
-          <span class="slurp-menu-item-badge">(VG)</span>
-          <span class="slurp-menu-item-badge">Borgergade</span>
-          </div>
-          <div class="slurp-menu-item-desc"><p>Charred padron peppers, creamy tofu filling, mushroom dashi reduction and lemon zest</p></div>
-        </div>
-        <div class="slurp-menu-item-price">95 DKK</div>
-      </div>
-      <div class="slurp-menu-item">
-        <div>
-          <div class="slurp-menu-item-name">Japanese Egg Smørrebrød
-          <span class="slurp-menu-item-badge">Vegetarian</span>
-          <span class="slurp-menu-item-badge">Nansensgade</span>
-          </div>
-          <div class="slurp-menu-item-desc"><p>Rye bread, egg salad, japanese mayonnaise and chilli crunch</p></div>
-        </div>
-        <div class="slurp-menu-item-price">70 DKK</div>
-      </div>
-      <div class="slurp-menu-item">
-        <div>
-          <div class="slurp-menu-item-name">Watercress Tuna Salad
-          <span class="slurp-menu-item-badge">Borgergade</span>
-          </div>
-          <div class="slurp-menu-item-desc"><p>Watercress, cured tuna, baby turnips, pickled ginger, horseradish sauce and vinegret</p></div>
-        </div>
-        <div class="slurp-menu-item-price">120 DKK</div>
-      </div>
-      <div class="slurp-menu-item">
-        <div>
-          <div class="slurp-menu-item-name">Summer salad
-          <span class="slurp-menu-item-badge">(VG)</span>
-          <span class="slurp-menu-item-badge">Nansensgade</span>
-          </div>
-          <div class="slurp-menu-item-desc"><p>Peas and fava beans with shio kombu, ramson and lime kosho vinaigrette</p></div>
-        </div>
-        <div class="slurp-menu-item-price">70 DKK</div>
-      </div>
-    </div>
-
-    <div class="slurp-menu-group">
-      <div class="slurp-menu-group-title">
-        <img src="https://cdn.prod.website-files.com/68baa907f46485600e606eb9/6908cd11a0358616c6879b4e_Condiments.svg" alt="" loading="lazy">
-        <span>Condiments</span>
-      </div>
-      
-      <div class="slurp-menu-item">
-        <div>
-          <div class="slurp-menu-item-name">Chilli Oil
-          
-          </div>
-          
-        </div>
-        <div class="slurp-menu-item-price">20 DKK</div>
-      </div>
-      <div class="slurp-menu-item">
-        <div>
-          <div class="slurp-menu-item-name">Chilli Crunch
-          
-          </div>
-          
-        </div>
-        <div class="slurp-menu-item-price">20 DKK</div>
-      </div>
-      <div class="slurp-menu-item">
-        <div>
-          <div class="slurp-menu-item-name">Kaedama (Noodles)
-          
-          </div>
-          
-        </div>
-        <div class="slurp-menu-item-price">25 DKK</div>
-      </div>
-      <div class="slurp-menu-item">
-        <div>
-          <div class="slurp-menu-item-name">Tamago (Egg)
-          
-          </div>
-          
-        </div>
-        <div class="slurp-menu-item-price">25 DKK</div>
-      </div>
-      <div class="slurp-menu-item">
-        <div>
-          <div class="slurp-menu-item-name">Chashu (Pork)
-          
-          </div>
-          
-        </div>
-        <div class="slurp-menu-item-price">35 DKK</div>
-      </div>
-    </div>
-
-    <div class="slurp-menu-group">
-      <div class="slurp-menu-group-title">
-        <img src="https://cdn.prod.website-files.com/68baa907f46485600e606eb9/6908cd111f4ca7780ecd1877_Beer.svg" alt="" loading="lazy">
-        <span>Beer</span>
-      </div>
-      
-      <div class="slurp-menu-item">
-        <div>
-          <div class="slurp-menu-item-name">Beer
-          
-          </div>
-          <div class="slurp-menu-item-desc"><p>Åben x Slurp Rice Lager &mdash; Fresh and floral rice lager from the local Åben brewery &mdash; 4.6% 33 cl</p><p>ÅBEN Bryg 61 NEIPA &mdash; Fruity and hoppy IPA with modest bitterness and notes of grapefruit and pine &mdash; 5.5% 33cl</p></div>
-        </div>
-        <div class="slurp-menu-item-price">65 DKK</div>
-      </div>
-    </div>
-
-    <div class="slurp-menu-group">
-      <div class="slurp-menu-group-title">
-        <img src="https://cdn.prod.website-files.com/68baa907f46485600e606eb9/6908cd1376349b15592ad97d_Wine.svg" alt="" loading="lazy">
-        <span>Wine</span>
-      </div>
-      
-      <div class="slurp-menu-item">
-        <div>
-          <div class="slurp-menu-item-name">Heinrich Orange Wine
-          
-          </div>
-          <div class="slurp-menu-item-desc"><p>Natural orange wine from Austria</p><p>12.5% 15cl</p></div>
-        </div>
-        <div class="slurp-menu-item-price">95 DKK</div>
-      </div>
-    </div>
-
-    <div class="slurp-menu-group">
-      <div class="slurp-menu-group-title">
-        <img src="https://cdn.prod.website-files.com/68baa907f46485600e606eb9/6908cd11803d40c9f03f7e77_Highball.svg" alt="" loading="lazy">
-        <span>Highballs</span>
-      </div>
-      
-      <div class="slurp-menu-item">
-        <div>
-          <div class="slurp-menu-item-name">Slurp Whisky Highball
-          <span class="slurp-menu-item-badge">Borgergade</span>
-          </div>
-          <div class="slurp-menu-item-desc"><p>Nikka Days Whisky, homemade Hojicha and Yuzu cordial, sparkling water</p></div>
-        </div>
-        <div class="slurp-menu-item-price">130 DKK</div>
-      </div>
-      <div class="slurp-menu-item">
-        <div>
-          <div class="slurp-menu-item-name">Slurp Vodka Highball
-          <span class="slurp-menu-item-badge">Borgergade</span>
-          </div>
-          <div class="slurp-menu-item-desc"><p>Nikka Japanese Vodka, homemade lime and cucumber cordial, sparkling water</p></div>
-        </div>
-        <div class="slurp-menu-item-price">120 DKK</div>
-      </div>
-    </div>
-
-    <div class="slurp-menu-group">
-      <div class="slurp-menu-group-title">
-        <img src="https://cdn.prod.website-files.com/68baa907f46485600e606eb9/6908cd12a6731ced261a712d_Mocktail.svg" alt="" loading="lazy">
-        <span>Mocktails</span>
-      </div>
-      
-      <div class="slurp-menu-item">
-        <div>
-          <div class="slurp-menu-item-name">Slurp Mocktail
-          
-          </div>
-          <div class="slurp-menu-item-desc"><p>Homemade syrup and sparkling water, ask staff about the flavours</p><p>0.0% 25cl</p></div>
-        </div>
-        <div class="slurp-menu-item-price">65 DKK</div>
-      </div>
-    </div>
-
-    <div class="slurp-menu-group">
-      <div class="slurp-menu-group-title">
-        <img src="https://cdn.prod.website-files.com/68baa907f46485600e606eb9/6908cd135c6900cc0a7fe3f0_SoftDrinks.svg" alt="" loading="lazy">
-        <span>Soft Drinks</span>
-      </div>
-      
-      <div class="slurp-menu-item">
-        <div>
-          <div class="slurp-menu-item-name">Soft Drinks
-          
-          </div>
-          <div class="slurp-menu-item-desc"><p>ÅBEN Y &mdash; Non-alcoholic lightly hopped IPA &mdash; 0.5% 33cl</p><p>Folk Kombucha &mdash; Ask our staff for flavours &mdash; 25cl</p><p>Sparkling Water &mdash; From Bornholms kildevand &mdash; 25cl</p><p>Kimino Yuzu &mdash; Japanese Yuzu lemonade &mdash; 25cl</p></div>
-        </div>
-        <div class="slurp-menu-item-price">40-65 DKK</div>
-      </div>
-    </div>
-
-    <div class="slurp-menu-group">
-      <div class="slurp-menu-group-title">
-        <img src="https://cdn.prod.website-files.com/68baa907f46485600e606eb9/6908cd12d5b5480dd044ef1a_HotTea.svg" alt="" loading="lazy">
-        <span>Tea</span>
-      </div>
-      
-      <div class="slurp-menu-item">
-        <div>
-          <div class="slurp-menu-item-name">Slurp Iced Tea
-          <span class="slurp-menu-item-badge">Borgergade</span>
-          </div>
-          <div class="slurp-menu-item-desc"><p>Homemade Hojicha and Yuzu cordial, sparkling water and mint</p></div>
-        </div>
-        <div class="slurp-menu-item-price">65 DKK</div>
-      </div>
-      <div class="slurp-menu-item">
-        <div>
-          <div class="slurp-menu-item-name">Tea
-          
-          </div>
-          <div class="slurp-menu-item-desc"><p>Hōjicha &mdash; Organic hōjicha from Tsukigase, Nara. Notes of roasted nuts, oven-baked apples, and dark caramel.</p><p>Sobacha &mdash; Organic buckwheat infusion. Notes of puffed rice and caramelised shoyu. &mdash; Chiran Sencha &mdash; Blend of five spring-harvested cultivars, shade-grown and partly deep-steamed, with gentle oceanic umami and a soothing sense of toasted nori-like warmth.</p><p>Yamazoe Kumano Bancha &mdash; Late-spring harvest bancha made in the local, but today rare, Kumano style, finished with a fragrant dark roast</p></div>
-        </div>
-        <div class="slurp-menu-item-price">55 DKK</div>
-      </div>
-    </div>
-
   </div>
 </section>
 
@@ -889,9 +564,9 @@ p { margin: 0 0 .75em; }
 
 <script>
 (function () {
-  var toggle = document.querySelector(".slurp-nav-toggle");
-  var close = document.querySelector(".slurp-nav-close");
-  var nav = document.querySelector(".slurp-nav");
+  var toggle = document.querySelector(".tata-nav-toggle");
+  var close = document.querySelector(".tata-nav-close");
+  var nav = document.querySelector(".tata-nav");
   function openNav() {
     nav.classList.add("is-open");
     close.classList.add("is-open");
@@ -910,23 +585,23 @@ p { margin: 0 0 .75em; }
     });
   }
 
-  document.querySelectorAll(".slurp-faq-q").forEach(function (q) {
+  document.querySelectorAll(".tata-faq-q").forEach(function (q) {
     q.addEventListener("click", function () {
-      q.closest(".slurp-faq-item").classList.toggle("is-open");
+      q.closest(".tata-faq-item").classList.toggle("is-open");
     });
   });
 
-  document.querySelectorAll(".slurp-newsletter-toggle").forEach(function (btn) {
+  document.querySelectorAll(".tata-newsletter-toggle").forEach(function (btn) {
     btn.addEventListener("click", function () {
       var form = document.querySelector(btn.getAttribute("data-target"));
       if (form) form.classList.toggle("is-open");
     });
   });
 
-  document.querySelectorAll(".slurp-newsletter-form").forEach(function (form) {
+  document.querySelectorAll(".tata-newsletter-form").forEach(function (form) {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      var msg = form.parentElement.querySelector(".slurp-newsletter-msg");
+      var msg = form.parentElement.querySelector(".tata-newsletter-msg");
       if (msg) {
         msg.textContent = "Thanks for signing up!";
         msg.classList.add("is-visible");
