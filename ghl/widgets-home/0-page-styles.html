@@ -1,0 +1,84 @@
+<style>
+.header.trans{
+	background: transparent;
+}
+.header.trans .logo-svg svg{
+	fill: #fff6ea !important;
+}
+.header.trans .head-link{
+	color: #fff6ea;
+}
+.header.trans .abre-menu{
+	color: #fff6ea;
+}
+.header.trans .bolita{
+	background-color: rgba(255, 246, 234, 1);
+  opacity: .25;
+}
+.header.trans .btn-carro,
+.header.trans .btn-carro-izq,
+.header.trans .btn-carro-der{
+	color: rgba(255, 246, 234, 0.25);
+}
+.header.arriba{
+	translate: 0 -120%;
+  transition: all 0s ease;
+}
+.header.arriba2{
+	translate: 0 -120%;
+}
+
+.suscribe{
+	opacity: 0;
+  transition: opacity .3s ease, left 0s linear .3s;
+}
+.suscribe.abierto{
+	opacity: 1;
+  left: 0;
+  transition: left 0s linear, opacity .3s ease;
+}
+.campo-mail{
+	border: 0 none;
+}
+
+/* Placeholder para navegadores Webkit (Chrome, Safari, nuevos Edge) */
+.campo-mail::placeholder, 
+.w-input::placeholder {
+  /* Aplicamos el color base del texto (255, 246, 234) con opacidad 0.25 */
+  color: rgba(255, 246, 234, 0.25); 
+}
+
+/* Placeholder para Firefox */
+.campo-mail::-moz-placeholder, 
+.w-input::-moz-placeholder {
+  color: rgba(255, 246, 234, 0.25);
+  opacity: 1; /* Necesario para que el color RGBA se muestre correctamente */
+}
+
+/* Placeholder para Internet Explorer */
+.campo-mail:-ms-input-placeholder,
+.w-input:-ms-input-placeholder {
+  color: rgba(255, 246, 234, 0.25);
+}
+.web-sup .loader-video{
+	opacity: 0;
+  transition: opacity .3s ease;
+}
+.web-sup.ya-cargo .loader-video{
+	opacity: 1;
+}
+.web-sup header.header{
+	opacity: 0;
+}
+.web-sup.ya-cargo header.header{
+	opacity: 1;
+}
+.local-imagen.w-background-video > video{
+	border-radius: 0.35em;
+}
+@media screen and (width < 768px){
+	#video-loader video{
+  	object-position: 51.5% center;
+  }
+}
+</style>
