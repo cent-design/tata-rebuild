@@ -5506,7 +5506,14 @@ h3 {
 
 .logo-pie {
   width: 100%;
-  max-width: 30.69em;
-  margin-left: auto;
-  margin-right: auto;
+  height: 5.56em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-pie svg {
+  height: 100%;
+  width: auto;
+  fill: #da3a30;
 }
