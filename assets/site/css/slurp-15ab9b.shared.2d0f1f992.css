@@ -2079,9 +2079,9 @@ textarea.w-input, textarea.w-select {
 
 :root {
   --color-crema: #fff6ea;
-  --color-rojo: #bd2025;
+  --color-rojo: #da3a30;
   --color-crema-25: #fff6ea40;
-  --color-rojo-25: #bd202540;
+  --color-rojo-25: #da3a3040;
 }
 
 .w-commerce-commercecartwrapper {
@@ -3324,6 +3324,10 @@ h3 {
   z-index: 2;
   background-color: var(--color-crema);
   position: relative;
+}
+
+#restaurant.container.home-mid {
+  background-color: #eecdd3;
 }
 
 .about {
