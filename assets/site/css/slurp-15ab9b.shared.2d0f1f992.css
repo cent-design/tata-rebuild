@@ -5475,3 +5475,38 @@ h3 {
     order: 2;
   }
 }
+
+.footer, .footer.container.es-sticky {
+  position: static;
+}
+
+.footer {
+  background-color: #eecdd3;
+}
+
+.footer.container {
+  color: #da3a30;
+}
+
+.footer .pie-item.texto-chico.pie-link {
+  color: #da3a30;
+}
+
+.footer .pie-item {
+  border-color: #da3a3040 #da3a3040 #da3a3040;
+}
+
+.footer .pie-link-wrapper {
+  border-bottom-color: #da3a3040;
+}
+
+.footer .bolita.bola-pie {
+  background-color: #da3a30;
+}
+
+.logo-pie {
+  width: 100%;
+  max-width: 30.69em;
+  margin-left: auto;
+  margin-right: auto;
+}
