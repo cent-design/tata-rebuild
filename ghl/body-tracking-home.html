@@ -1,4 +1,4 @@
-<script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=68baa907f46485600e606eb9" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script><script src="https://cdn.prod.website-files.com/68baa907f46485600e606eb9/js/slurp-15ab9b.schunk.172ec51a511480e2.js" type="text/javascript" integrity="sha384-qU8s0hexa7230yNvRC7SOXbAhsCCiiSAtnmgEod8Ssr0OB50VGzzWLiPDvmaspsW" crossorigin="anonymous"></script><script src="https://cdn.prod.website-files.com/68baa907f46485600e606eb9/js/slurp-15ab9b.schunk.aab8fe69e23464a2.js" type="text/javascript" integrity="sha384-EfhonWPFE7EDpT/9EzRohiToMFGr+SL+alIQdHSxPjNXc33ZKbJ0zO+hOSY9dkkh" crossorigin="anonymous"></script><script src="https://cdn.prod.website-files.com/68baa907f46485600e606eb9/js/slurp-15ab9b.0fe96c86.1c4df0607d97f970.js" type="text/javascript" integrity="sha384-A0N5eZZSN6HGYTMh7GDWtnbt6f6bjR2iO0yOBdfF67+wGllfvdsqyHP2BJ6Wg3jO" crossorigin="anonymous"></script><script>
+<script src="https://cent-design.github.io/tata-rebuild/assets/vendor/jquery-3.5.1.min.js" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script><script src="https://cent-design.github.io/tata-rebuild/assets/site/js/slurp-15ab9b.schunk.172ec51a511480e2.js" type="text/javascript" integrity="sha384-qU8s0hexa7230yNvRC7SOXbAhsCCiiSAtnmgEod8Ssr0OB50VGzzWLiPDvmaspsW" crossorigin="anonymous"></script><script src="https://cent-design.github.io/tata-rebuild/assets/site/js/slurp-15ab9b.schunk.aab8fe69e23464a2.js" type="text/javascript" integrity="sha384-EfhonWPFE7EDpT/9EzRohiToMFGr+SL+alIQdHSxPjNXc33ZKbJ0zO+hOSY9dkkh" crossorigin="anonymous"></script><script src="https://cent-design.github.io/tata-rebuild/assets/site/js/slurp-15ab9b.0fe96c86.1c4df0607d97f970.js" type="text/javascript" integrity="sha384-A0N5eZZSN6HGYTMh7GDWtnbt6f6bjR2iO0yOBdfF67+wGllfvdsqyHP2BJ6Wg3jO" crossorigin="anonymous"></script><script>
 $('footer.footer').addClass('es-sticky');
 $('.txt-pie-desple').removeClass('seve');
 $('.pie-sin-linea').on('click', function() {
@@ -190,7 +190,7 @@ $(document).ready(function() {
     $('.web-sup').addClass('ya-cargo');
     
     //precarga de imagen menu
-    var imageUrl = "https://cdn.prod.website-files.com/68c7b1df3038be004f6a8a21/68fa7e9eec7f75868749a089_01ramen_01Shoyu%20Ramen.png";
+    var imageUrl = "https://cent-design.github.io/tata-rebuild/assets/media/68fa7e9eec7f75868749a089_01ramen_01Shoyu%20Ramen.png";
     var img = new Image();
     img.src = imageUrl;
 
@@ -201,5 +201,33 @@ $(document).ready(function() {
     $(img).on('error', function() {
         console.error('Error al precargar la imagen.');
     });
+});
+</script><script>
+document.addEventListener('DOMContentLoaded', function () {
+  var trigger = document.getElementById('abrir-orden');
+  var closeBtn = document.getElementById('cerrar-orden');
+  var fondo = document.getElementById('cerrar-orden-fondo');
+  var wrapper = document.getElementById('orden-panel-wrapper');
+  if (!trigger || !wrapper) return;
+
+  function openOrden(e) {
+    if (e) e.preventDefault();
+    wrapper.style.display = 'flex';
+    requestAnimationFrame(function () {
+      wrapper.classList.add('abierto');
+    });
+  }
+
+  function closeOrden(e) {
+    if (e) e.preventDefault();
+    wrapper.classList.remove('abierto');
+    setTimeout(function () {
+      wrapper.style.display = 'none';
+    }, 300);
+  }
+
+  trigger.addEventListener('click', openOrden);
+  if (closeBtn) closeBtn.addEventListener('click', closeOrden);
+  if (fondo) fondo.addEventListener('click', closeOrden);
 });
 </script>
