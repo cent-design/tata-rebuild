@@ -5521,3 +5521,45 @@ h3 {
 .footer .creditos-der {
   color: #da3a30;
 }
+
+.orden-wrapper {
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+.orden-wrapper.abierto {
+  opacity: 1;
+}
+
+.orden-fondo {
+  position: absolute;
+  inset: 0;
+  cursor: pointer;
+}
+
+.orden-panel {
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+}
+
+.orden-wrapper.abierto .orden-panel {
+  transform: translateX(0);
+}
+
+.orden-links {
+  flex-flow: column;
+  display: flex;
+  padding: 1.39em;
+}
+
+.orden-link {
+  border-bottom: 1px solid var(--color-crema-25);
+  color: var(--color-crema);
+  text-decoration: none;
+  padding-top: 0.7em;
+  padding-bottom: 0.7em;
+}
+
+.orden-link:last-child {
+  border-bottom: none;
+}
